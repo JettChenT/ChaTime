@@ -5,19 +5,7 @@ import re
 import streamlit as st
 import shutil
 import sys
-
-try:
-    import timeblok_py
-except ImportError:
-    import os
-    import subprocess
-    if shutil.which("cargo") is None:
-        print("installing rust to install timebloko compiler..")
-        os.system("curl https://sh.rustup.rs -sSf | sh -s -- -y")
-    # add rust binary to path
-    sys.path.append(os.path.expanduser("~/.cargo/bin"))
-    os.system("pip install timeblok_py")
-    import timeblok_py
+import timeblok_py
 
 def set_openai_api(key, base=None):
     openai.api_key = key
