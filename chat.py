@@ -16,7 +16,7 @@ except ImportError:
         os.system("curl https://sh.rustup.rs -sSf | sh -s -- -y")
     # add rust binary to path
     sys.path.append(os.path.expanduser("~/.cargo/bin"))
-    os.system("source $HOME/.cargo/env; pip install timeblok_py")
+    os.system("pip install timeblok_py")
     import timeblok_py
 
 def set_openai_api(key, base=None):
