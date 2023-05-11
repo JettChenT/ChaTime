@@ -1,9 +1,20 @@
-import timeblok_py
 import datetime
 import openai
 import os
 import re
 import streamlit as st
+import shutil
+
+try:
+    import timeblok_py
+except ImportError:
+    import os
+    import subprocess
+    if shutil.which("cargo") is None:
+        print("installing rust to install timebloko compiler..")
+        os.system("curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh")
+    subprocess.run(["pip", "install", "timeblok_py"])
+    import timeblok_py
 
 def set_openai_api(key, base=None):
     openai.api_key = key
@@ -61,6 +72,7 @@ def complete(messages):
     parsed = parse_results(content)
     content = "\r\n"+content.replace("\n", "\r\n")
     return content, parsed
+
 
 def compile(tb:str):
     # get current year, month, date
