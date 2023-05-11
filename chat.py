@@ -13,7 +13,7 @@ except ImportError:
     if shutil.which("cargo") is None:
         print("installing rust to install timebloko compiler..")
         os.system("curl https://sh.rustup.rs -sSf | sh -s -- -y")
-    subprocess.run(["pip", "install", "timeblok_py"])
+    os.system("source $HOME/.cargo/env; pip install timeblok_py")
     import timeblok_py
 
 def set_openai_api(key, base=None):
