@@ -4,6 +4,7 @@ import os
 import re
 import streamlit as st
 import shutil
+import sys
 
 try:
     import timeblok_py
@@ -13,6 +14,8 @@ except ImportError:
     if shutil.which("cargo") is None:
         print("installing rust to install timebloko compiler..")
         os.system("curl https://sh.rustup.rs -sSf | sh -s -- -y")
+    # add rust binary to path
+    sys.path.append(os.path.expanduser("~/.cargo/bin"))
     os.system("source $HOME/.cargo/env; pip install timeblok_py")
     import timeblok_py
 
