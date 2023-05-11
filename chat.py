@@ -48,7 +48,7 @@ def get_prompt(user, generated, new):
     return prompts
 
 def parse_results(markdown):
-    code_blocks = re.findall("```(timeblok)\r?\n(.*?)```", markdown, flags=re.DOTALL)
+    code_blocks = re.findall("```(timeblok)?\r?\n(.*?)```", markdown, flags=re.DOTALL)
     if code_blocks:
         return code_blocks[0][1]
     return None
