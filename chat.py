@@ -12,7 +12,7 @@ except ImportError:
     import subprocess
     if shutil.which("cargo") is None:
         print("installing rust to install timebloko compiler..")
-        os.system("curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh")
+        os.system("curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -- -y")
     subprocess.run(["pip", "install", "timeblok_py"])
     import timeblok_py
 
